@@ -24,7 +24,11 @@ class CalDiv extends Component {
     //   return <div>Please enter number</div>;
     // }
   }
-  divid() {}
+  divid(e) {
+    this.setState({ Result: this.state.first / this.state.second });
+    console.log(this.state);
+    e.preventDefault();
+  }
   render() {
     return (
       <form>
@@ -65,7 +69,7 @@ class CalDiv extends Component {
                 style={{ padding: '10px' }}
                 type="submit"
                 className="ui button primary"
-                onClick={() => this.divid()}
+                onClick={e => this.divid(e)}
               >
                 Divid
               </button>

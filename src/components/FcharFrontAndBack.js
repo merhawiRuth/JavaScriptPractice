@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
 
-class rotate extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { init: '', rotate: '', changed: true };
-    this.rotateOnClick = this.rotateOnClick.bind(this);
-    this.onChange = this.onChange.bind(this);
-  }
-  onChange(event) {
-    this.setState({ init: event.target.value.toUpperCase() });
-  }
-  rotateOnClick() {
-    let rotated = '';
-    for (let i = this.state.init.length - 1; i >= 0; i--) {
-      rotated += this.state.init[i];
+class FCharFrontAndBack extends Component {
+    constructor(props){
+        super(props);
+        this.state = { init: '', added: ''};
+        this.addedFunc = this.addedFunc.bind(this);
     }
-    this.setState({ rotate: rotated.toUpperCase() });
-    // this.setState({
-    //   init: this.state.init
-    //     .split('')
-    //     .reverse()
-    //     .join('')
-    // });
+
+
+  addedFunc() {
+
+    console.log(this.state.init);
+
   }
   render() {
     return (
@@ -31,7 +21,7 @@ class rotate extends Component {
             style={{ marginTop: '25px', marginBottom: '25px' }}
             className="ui card"
           >
-            What word do you want to rotate?
+           Create a new string from a given string with the first character of the given string added at the front and back.
           </div>
         </div>
 
@@ -42,22 +32,22 @@ class rotate extends Component {
                 <input
                   type="input"
                   value={this.state.init}
-                  onChange={this.onChange}
+                  onChange={e => this.setState({init: e.target.value})}
                 />
               </div>
               <button
                 type="submit"
                 className="ui button primary"
-                onClick={this.rotateOnClick}
+                onClick={this.onChange}
               >
-                Rotate
+                Add
               </button>
               <div style={{ padding: '10px' }} className="ui container">
                 <div
                   style={{ padding: '5px', marginRight: '25px' }}
                   className="ui card"
                 >
-                  Rotated word: {this.state.rotate}
+                  added word: {this.state.added}
                 </div>
               </div>
             </div>
@@ -68,4 +58,4 @@ class rotate extends Component {
   }
 }
 
-export default rotate;
+export default FCharFrontAndBack;
