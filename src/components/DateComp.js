@@ -5,6 +5,10 @@ class dateComp extends Component {
     super(props);
     this.state = { Day: '', Time: '' };
     this.newDate = this.newDate.bind(this);
+    this.discardDate = this.discardDate.bind(this);
+  }
+  discardDate() {
+    this.setState({ Day: `Discarded`, Time: `I don't know` });
   }
 
   newDate() {
@@ -25,6 +29,12 @@ class dateComp extends Component {
       case 5:
         this.setState({ Day: 'Firday' });
         break;
+      case 6:
+        this.setState({ Day: 'Saturday' });
+        break;
+      case 7:
+        this.setState({ Day: 'Sunday' });
+        break;
       default:
         this.setState({ Day: 'Moday' });
     }
@@ -43,22 +53,26 @@ class dateComp extends Component {
 
   render() {
     return (
-      <div
-        classstyle="ui card"
-        style={{
-          position: 'absolute',
-          width: '580px',
-          left: '40%',
-          top: '40%'
-        }}
-      >
-        <div className="ui card">
-          <div className="content">
-            <button className="ui button primary" onClick={this.newDate}>
-              Date
-            </button>
-            <h1>Today is {this.state.Day}</h1>
-            <h1>Time is {this.state.Time}</h1>
+      <div>
+        <div classstyle="ui card">
+          <div className="ui card">
+            return date in the following format: Today is : Tuesday. Current
+            time is : 10 PM : 30 : 38
+          </div>
+        </div>
+
+        <div classstyle="ui card">
+          <div className="ui card">
+            <div className="content">
+              <button className="ui button primary" onClick={this.newDate}>
+                Date
+              </button>
+              <button className="ui button" onClick={this.discardDate}>
+                Discard
+              </button>
+              <h1>Today is {this.state.Day}</h1>
+              <h1>Time is {this.state.Time}</h1>
+            </div>
           </div>
         </div>
       </div>
