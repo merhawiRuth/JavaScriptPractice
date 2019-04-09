@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 
 class FCharFrontAndBack extends Component {
-    constructor(props){
-        super(props);
-        this.state = { init: '', added: ''};
-        this.addedFunc = this.addedFunc.bind(this);
-    }
-
+  constructor(props) {
+    super(props);
+    this.state = { init: '', added: '' };
+    this.addedFunc = this.addedFunc.bind(this);
+  }
 
   addedFunc() {
-
-    console.log(this.state.init);
-
+    let all =
+      this.state.init.substr(0, 1) +
+      this.state.init +
+      this.state.init.substr(0, 1);
+    this.setState({
+      added: all.toUpperCase()
+    });
   }
   render() {
     return (
@@ -21,7 +24,8 @@ class FCharFrontAndBack extends Component {
             style={{ marginTop: '25px', marginBottom: '25px' }}
             className="ui card"
           >
-           Create a new string from a given string with the first character of the given string added at the front and back.
+            Create a new string from a given string with the first character of
+            the given string added at the front and back.
           </div>
         </div>
 
@@ -32,13 +36,13 @@ class FCharFrontAndBack extends Component {
                 <input
                   type="input"
                   value={this.state.init}
-                  onChange={e => this.setState({init: e.target.value})}
+                  onChange={e => this.setState({ init: e.target.value })}
                 />
               </div>
               <button
                 type="submit"
                 className="ui button primary"
-                onClick={this.onChange}
+                onClick={this.addedFunc}
               >
                 Add
               </button>
